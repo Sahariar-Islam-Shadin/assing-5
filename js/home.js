@@ -13,11 +13,13 @@ async function issuesFetchData() {
 
 const displayIssues = (issues) => {
   //   console.log(issues);
+  
   const issuesContainer = document.getElementById("container");
   issuesContainer.innerHTML = "";
   issues.forEach((item) => {
     let statusIcons = "";
     let priorityColor = "";
+    
     // console.log(item);
 
     const issuesAppended = document.createElement("div");
@@ -25,7 +27,9 @@ const displayIssues = (issues) => {
     issuesAppended.className =
       "bg-white p-5 space-y-4 border-t-gray-500 border-t-5 rounded-xl";
     // for open and closed border
+    
     if (item.status === "open") {
+     
       //   console.log(item.status);
       issuesAppended.classList.replace(
         "border-t-gray-500",
@@ -51,6 +55,7 @@ const displayIssues = (issues) => {
     }
 
     issuesAppended.innerHTML = `
+   
     <div  class="flex items-center  justify-between space-x-2 ">
             <img src= "${statusIcons}" alt=""> 
             <p onclick="useModal(${item.id})" class="${priorityColor} rounded-3xl px-5 py-1">${item.priority}</p>
@@ -74,6 +79,7 @@ const displayIssues = (issues) => {
                         <P><p>${new Date(item.createdAt).toLocaleDateString()}</p></P>
                     </div>
     `;
+    
     issuesContainer.appendChild(issuesAppended);
   });
   // hiddenLoading();
