@@ -92,11 +92,13 @@ const countIssues = document.getElementById("countIssues");
 const loadingScan = document.getElementById("loadingScan");
 
 // show loading
+
 function showLoading() {
   loadingScan.classList.add("flex");
   loadingScan.classList.remove("hidden");
 }
 // hidden loading
+
 function hiddenLoading() {
   loadingScan.classList.add("hidden");
   loadingScan.classList.remove("flex");
@@ -106,10 +108,12 @@ let allBtnStatus = "all-btn";
 function toggleBtn(id) {
   allBtnStatus = id;
   showLoading();
+  
   // remove all color
   allbtn.classList.remove("btn-primary", "text-white");
   openBtn.classList.remove("btn-primary", "text-white");
   closeBtn.classList.remove("btn-primary", "text-white");
+  
   // color-color added
   allbtn.classList.add("bg-white", "text-black");
   openBtn.classList.add("bg-white", "text-black");
@@ -129,6 +133,7 @@ function toggleBtn(id) {
     } else if (id === "close-btn") {
       filteredIssues = issues.filter((issue) => issue.status === "closed");
       displayIssues(filteredIssues);
+     
       // hiddenLoading();
       document.getElementById("countIssues").innerText = filteredIssues.length;
     } else if (id === "all-btn") {
@@ -140,6 +145,7 @@ function toggleBtn(id) {
 }
 
 // search
+
 document
   .getElementById("search-btn")
   .addEventListener("click", async function () {
@@ -168,7 +174,7 @@ document
     searchValue.value = "";
   });
 
-// modal
+// model
 async function useModal(id) {
   const res = await fetch(
     `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`,
@@ -176,7 +182,7 @@ async function useModal(id) {
   const data = await res.json();
   displayModal(data.data);
 }
-// display modal
+// display model
 async function displayModal(menu) {
   const modalContainer = document.getElementById("modalContainer");
   let menuStatus = menu.status === "open" ? "bg-green-500" : "bg-red-500";
